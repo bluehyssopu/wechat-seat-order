@@ -1,6 +1,7 @@
 <view class="user-info-header">
   <image class="avatar" src="{{userInfo.avatarUrl}}" />
   <view class="user-name">{{userInfo.nickName}}</view>
+  <view class="iconfont icon-editor" bindtap="editorUserInfo"></view>
 </view>
 
 <view class="user-info-body">
@@ -9,7 +10,7 @@
     <text class="value">{{userInfo.username}}</text>
   </view>
   <view class="user-info-item">
-    <text class="label iconfont icon-user"> 电子邮箱</text>
+    <text class="label iconfont icon-email"> 电子邮箱：</text>
     <text class="value">{{userInfo.email}}</text>
   </view>
   <view class="user-info-item">
@@ -18,14 +19,6 @@
   </view>
 </view>
 <view class="btn-container">
-  <button class="btn">修改密码</button>
-  <button class="btn">退出登录</button>
+  <button class="btn" bindtap="updatePwd">修改密码</button>
+  <button class="btn" bindtap="loginout">退出登录</button>
 </view>
-<!-- 
-<block><svg class="icon" aria-hidden="true">
-<use xlink:href="#icon-seat-mine"></use>
-</svg></block>
-
-<script src="/assets/iconfont/iconfont"></script>
--->
-

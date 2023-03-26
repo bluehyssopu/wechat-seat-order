@@ -52,6 +52,7 @@
 }
 
 .value {
+  color: #999;
   margin-left: 10rpx;
 }
 
