@@ -1,0 +1,26 @@
+<!--pages/home/home.wxml-->
+<!-- home首页 -->
+<swiper class="cover_swiper" 
+  indicator-dots='true' 
+  display-multiple-items='1' 
+  autoplay='true' 
+  circular='true' 
+  interval='4000'
+  >
+  <block wx:for="{{coverList}}" wx:key="id">
+    <swiper-item>
+      <view class='imageBox'>
+        <image src="{{item.url}}" mode='widthFix' class="swiper-img"/>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+
+
+<view class="btn-container">
+  <view wx:for="{{pages}}" wx:key="name" class="btn-view">
+    <button bindtap="onBtnClick" data-item="{{item}}" class="btns">
+      {{ item.name }}
+    </button>
+  </view>
+</view>
