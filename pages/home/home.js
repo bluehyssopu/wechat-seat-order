@@ -49,5 +49,24 @@ Page({
     wx.navigateTo({
       url: item.path,
     })
+  },
+  getToken: function (e) {
+    wx.request({
+      url: 'http://127.0.0.1:4000/my/userinfo',
+      method: 'get',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'Authorization': wx.getStorageSync('token')
+      },
+      success: function (res) {
+        console.log(res.data);
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '网络错误',
+          icon: 'none'
+        })
+      }
+    })
   }
 })

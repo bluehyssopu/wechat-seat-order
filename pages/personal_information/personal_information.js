@@ -27,8 +27,8 @@ Page({
           console.log('用户点击确定')
           wx.setStorageSync('token', '');//将token置空
           wx.redirectTo({
-            // url: '/pages/login/login',  //跳去登录页
-            url: '/pages/home/home'
+            url: '/pages/login/login',  //跳去登录页
+            // url: '/pages/home/home'
           })
         } else {  //这里是点击了取消以后
           console.log('用户点击取消')

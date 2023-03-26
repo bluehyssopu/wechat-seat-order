@@ -1,0 +1,13 @@
+<view class="container">
+  <form class="form" bindsubmit="onSubmit">
+    <view class="form-item">
+      <view class="label">用户名</view>
+      <input type="text" placeholder="请输入用户名" bindinput="bindUsernameInput" />
+    </view>
+    <view class="form-item">
+      <view class="label">密码</view>
+      <input type="password" placeholder="请输入密码" bindinput="bindPasswordInput" />
+    </view>
+    <button class="btn" form-type="submit">登录</button>
+  </form>
+</view>
