@@ -1,6 +1,6 @@
 <view class="user-info-header">
-  <image class="avatar" src="{{userInfo.avatarUrl}}" />
-  <view class="user-name">{{userInfo.nickName}}</view>
+  <image class="avatar" src="{{userInfo.avatar}}" />
+  <view class="user-name">{{userInfo.nickname}}</view>
   <view class="iconfont icon-editor" bindtap="editorUserInfo"></view>
 </view>
 

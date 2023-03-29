@@ -1,1 +1,53 @@
-/* pages/seat_select_choose/seat_select_choose.wxss */
+.list {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  width: 90%;
+  height: 220rpx;
+  box-sizing: border-box;
+  margin: 20rpx auto;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 24rpx;
+  box-shadow: 2px 3px 0px 0px rgba(7, 17, 27, 0.05);
+}
+
+.list-item-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90rpx;
+  margin: 10rpx 20rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.content {
+  font-size: 28rpx;
+  color: #656565;
+}
+
+.select-btn:not([size="default"]) {
+  margin: auto 10rpx;
+  line-height: 1.8;
+  color: #2a5cc2;
+  font-size: 30rpx;
+  font-weight: normal;
+  background-color: #ecf0fb;
+  border: 1px solid #3268d1;
+}
+
+.progress-box {
+  margin-top: 10rpx;
+}

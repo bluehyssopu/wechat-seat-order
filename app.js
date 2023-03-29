@@ -1,4 +1,6 @@
 // app.js
+const baseUrl = "http://127.0.0.1:4000"
+module.exports = baseUrl
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -6,14 +8,9 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
   },
   globalData: {
-    userInfo: null
+    version: "1.0.0",
+    userInfo: {}
   }
 })

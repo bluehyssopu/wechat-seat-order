@@ -1,2 +1,54 @@
-<!--pages/seat_select_choose/seat_select_choose.wxml-->
-<text>pages/seat_select_choose/seat_select_choose.wxml</text>
+<view class="list">
+  <view class="list-item" style="margin-top: 40rpx;">
+    <view class="list-item-content">
+      <text class="title">临窗学习区1F-A</text>
+      <button class="select-btn" size="mini">筛选</button>
+    </view>
+    <view class="list-item-content">
+      <text class="content">总数：64</text>
+      <text class="content">可用：32</text>
+    </view>
+    <view class="progress-box">
+      <progress percent="80" color="#10AEFF" active stroke-width="3" />
+    </view>
+  </view>
+  <view class="list-item">
+    <view class="list-item-content">
+      <text class="title">临窗学习区1F-B</text>
+      <button class="select-btn" size="mini">筛选</button>
+    </view>
+    <view class="list-item-content">
+      <text class="content">总数：128</text>
+      <text class="content">可用：46</text>
+    </view>
+    <view class="progress-box">
+      <progress percent="60" color="#10AEFF" active stroke-width="3" />
+    </view>
+  </view>
+  <view class="list-item">
+    <view class="list-item-content">
+      <text class="title">电子阅览区</text>
+      <button class="select-btn" size="mini">筛选</button>
+    </view>
+    <view class="list-item-content">
+      <text class="content">总数：46</text>
+      <text class="content">可用：11</text>
+    </view>
+    <view class="progress-box">
+      <progress percent="80" color="#10AEFF" active stroke-width="3" />
+    </view>
+  </view>
+  <view class="list-item">
+    <view class="list-item-content">
+      <text class="title">阅览区1F-B</text>
+      <button class="select-btn" size="mini">筛选</button>
+    </view>
+    <view class="list-item-content">
+      <text class="content">总数：64</text>
+      <text class="content">可用：32</text>
+    </view>
+    <view class="progress-box">
+      <progress percent="80" color="#10AEFF" active stroke-width="3" />
+    </view>
+  </view>
+</view>

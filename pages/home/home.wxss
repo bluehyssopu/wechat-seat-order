@@ -52,9 +52,7 @@
   width: 300rpx;
   margin: 20rpx;
   border-radius: 24rpx;
-  -webkit-box-shadow: 2px 3px 8px 6px rgba(7, 17, 27, 0.05);
-  -moz-box-shadow: 2px 3px 8px 6px rgba(7, 17, 27, 0.05);
-  box-shadow: 2px 3px 8px 6px rgba(7, 17, 27, 0.05);
+  box-shadow: 2px 3px 2px 0px rgba(7, 17, 27, 0.05);
 }
 
 .btns {

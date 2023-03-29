@@ -8,6 +8,7 @@
     "pages/seat_select_history/seat_select_history",
     "pages/user_assistance/user_assistance",
     "pages/personal_information/personal_information",
+    "pages/updateUserInfo/updateUserInfo",
     "pages/index/index",
     "pages/logs/logs"
   ],
@@ -15,7 +16,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#167aea",
     "navigationBarTitleText": "座位预约",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "selectedColor": "#367dfd",

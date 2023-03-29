@@ -25,6 +25,6 @@
   </view>
 </view>
 
-<view>
+<!-- <view>
   <button bindtap="getToken">获取token</button>
-</view>
+</view> -->

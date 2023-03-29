@@ -1,0 +1,11 @@
+<view class="container">
+  <form class="form" bindsubmit="onSubmit">
+    <view class="form-item">
+      <input class="input" type="text" placeholder="新昵称"  bindinput="bindNicknameInput" />
+    </view>
+    <view class="form-item">
+      <input class="input" type="text" placeholder="新邮箱地址"  bindinput="bindEmailInput" />
+    </view>
+    <button class="login-btn" form-type="submit" type="primary">保存更改</button>
+  </form>
+</view>

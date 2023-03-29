@@ -1,3 +1,5 @@
+const baseUrl = require("../../app");
+
 Page({
   data: {
     username: '',
@@ -21,7 +23,7 @@ Page({
   onSubmit: function (e) {
     console.log(this.data);
     wx.request({
-      url: 'http://127.0.0.1:4000/api/login',
+      url: baseUrl + '/api/login',
       method: 'POST',
       data: {
         username: this.data.username,
