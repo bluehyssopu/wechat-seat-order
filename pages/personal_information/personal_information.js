@@ -18,7 +18,10 @@ Page({
     })
   },
   updatePwd() {
-    console.log("更新密码");
+    // console.log("更新密码");
+    wx.navigateTo({
+      url: '/pages/updatePassword/updatePassword',
+    })
   },
   onLoad: function() {
     this.getUserInfo()

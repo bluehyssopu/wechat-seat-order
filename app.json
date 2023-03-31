@@ -9,6 +9,7 @@
     "pages/user_assistance/user_assistance",
     "pages/personal_information/personal_information",
     "pages/updateUserInfo/updateUserInfo",
+    "pages/updatePassword/updatePassword",
     "pages/index/index",
     "pages/logs/logs"
   ],
