@@ -1,66 +1,33 @@
-// pages/seat_select_choose/seat_select_choose.js
+const baseUrl = require("../../app");
+
+// 在页面的js文件中，需要先获取各区域的座位信息
+const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    seatInfoList: {}
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
-
+    this.getSeatInfoList();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  getSeatInfoList() {
+    const that = this;
+    wx.request({
+      url: baseUrl + '/api/seat/list',
+      method: 'get',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'Authorization': wx.getStorageSync('token')
+      },
+      success: (res) => {
+        // console.log(res.data.data[0]);
+        const obj = res.data.data[0];
+        that.setData({
+          seatInfoList: obj
+        })
+      },
+      fail: function (res) {
+        console.log(res.errMsg);
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })
