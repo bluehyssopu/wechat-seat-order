@@ -6,6 +6,7 @@
     "pages/seat_select_choose/seat_select_choose",
     "pages/seat_select_mine/seat_select_mine",
     "pages/seat_select_history/seat_select_history",
+    "pages/studyRecord/studyRecord",
     "pages/user_assistance/user_assistance",
     "pages/personal_information/personal_information",
     "pages/updateUserInfo/updateUserInfo",

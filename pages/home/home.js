@@ -16,8 +16,8 @@ Page({
         path: "/pages/logs/logs"
       },
       {
-        name: "预约选座",
-        path: "/pages/seat_select/seat_select"
+        name: "学习记录",
+        path: "/pages/studyRecord/studyRecord"
       }
     ],
     // 居中显示项的位置
