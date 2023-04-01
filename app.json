@@ -8,7 +8,7 @@
     "pages/seat_select_history/seat_select_history",
     "pages/studyRecord/studyRecord",
     "pages/user_assistance/user_assistance",
-    "pages/personal_information/personal_information",
+    "pages/user/user",
     "pages/updateUserInfo/updateUserInfo",
     "pages/updatePassword/updatePassword",
     "pages/index/index",
@@ -38,7 +38,7 @@
       },
       {
         "text": "我的",
-        "pagePath": "pages/personal_information/personal_information",
+        "pagePath": "pages/user/user",
         "iconPath": "assets/tabbar/user.png",
         "selectedIconPath": "assets/tabbar/user-active.png"
       }

@@ -47,7 +47,7 @@ Page({
           // 修改个人信息成功，跳转到个人信息页面
           console.log("修改个人信息成功");
           wx.redirectTo({
-            url: '/pages/personal_information/personal_information',
+            url: '/pages/user/user',
           })
         } else {
           wx.showToast({
