@@ -1,0 +1,37 @@
+Page {
+  background-color: #fff;
+}
+
+:root {
+  --busy-bg-img: url(https://vip2.loli.io/2023/04/05/ecWymJTbS2ogM1q.png),
+  --free-bg-img: url(https://vip2.loli.io/2023/04/05/672uUQBgzeLSf1G.png)
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  align-content: space-between;
+}
+
+.btns-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 130rpx;
+  margin: 10rpx;
+  height: 120rpx;
+  background-color: #fff;
+  line-height: 55rpx;
+  align-content: center;
+}
+
+.text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: #fff;
+  transform: translate(-50%, -50%);
+}

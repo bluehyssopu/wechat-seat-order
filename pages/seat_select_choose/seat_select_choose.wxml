@@ -1,5 +1,5 @@
 <view class="list">
-  <view class="list-item" style="margin-top: 40rpx;">
+  <view class="list-item" style="margin-top: 40rpx;" id="A" bindtap="getSeatZoneList">
     <view class="list-item-content">
       <text class="title">临窗学习区1F-A</text>
       <button class="select-btn" size="mini">筛选</button>
@@ -12,7 +12,7 @@
       <progress percent="{{seatInfoList.A_free / seatInfoList.A_all * 100}}" color="#10AEFF" active stroke-width="3" />
     </view>
   </view>
-  <view class="list-item">
+  <view class="list-item" id="B" bindtap="getSeatZoneList">
     <view class="list-item-content">
       <text class="title">临窗学习区1F-B</text>
       <button class="select-btn" size="mini">筛选</button>
@@ -25,7 +25,7 @@
       <progress percent="{{seatInfoList.B_free / seatInfoList.B_all * 100}}" color="#10AEFF" active stroke-width="3" />
     </view>
   </view>
-  <view class="list-item">
+  <view class="list-item" id="R" bindtap="getSeatZoneList">
     <view class="list-item-content">
       <text class="title">电子阅览区</text>
       <button class="select-btn" size="mini">筛选</button>

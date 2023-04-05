@@ -2,8 +2,8 @@
   "pages": [
     "pages/login/login",
     "pages/home/home",
-    "pages/seat_select/seat_select",
     "pages/seat_select_choose/seat_select_choose",
+    "pages/seat_select_list/seat_select_list",
     "pages/seat_select_mine/seat_select_mine",
     "pages/seat_select_history/seat_select_history",
     "pages/studyRecord/studyRecord",

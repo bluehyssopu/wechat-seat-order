@@ -1,0 +1,12 @@
+<view class="btn-container">
+  <block wx:for="{{seatZoneList}}" wx:key="seat_number">
+    <!-- style="background-color: {{item.status == '空闲' ? 'green' : (item.status == '已预约' ? 'yellow' : 'red')}}" -->
+    <view bindtap="onBtnClick" 
+      data-item="{{item}}" 
+      class="btns-view">
+      <image src="{{ item.status == '空闲' ? 'https://vip2.loli.io/2023/04/05/672uUQBgzeLSf1G.png' : 'https://vip2.loli.io/2023/04/05/ecWymJTbS2ogM1q.png'}}" 
+      mode="aspectFit" />
+      <text class="text">{{ item.seat_number }}</text>
+    </view>
+  </block>
+</view>
