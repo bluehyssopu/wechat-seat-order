@@ -1,6 +1,7 @@
 // app.js
 const baseUrl = "http://127.0.0.1:4000"
 module.exports = baseUrl
+
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -11,6 +12,7 @@ App({
   },
   globalData: {
     version: "1.0.0",
-    userInfo: {}
+    userInfo: {},
+    seatZoneId: ""
   }
 })

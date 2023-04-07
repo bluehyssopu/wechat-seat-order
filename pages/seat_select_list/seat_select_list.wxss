@@ -20,7 +20,7 @@ Page {
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 130rpx;
+  width: 105rpx;
   margin: 10rpx;
   height: 120rpx;
   background-color: #fff;

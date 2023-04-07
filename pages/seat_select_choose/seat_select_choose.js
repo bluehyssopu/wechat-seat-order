@@ -65,5 +65,16 @@ Page({
         console.log(res.errMsg);
       }
     })
+  },
+
+  SetSeatZoneId: function(event) {
+    const seatZoneId = event.currentTarget.id
+    wx.setStorage({
+      key: 'seatZoneId',
+      data: seatZoneId
+    })
+    wx.navigateTo({
+      url: '/pages/seat_select_list/seat_select_list',
+    })
   }
 })
