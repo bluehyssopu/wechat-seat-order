@@ -4,7 +4,13 @@ const app = getApp();
 Page({
   data: {
     seatZoneList: [],
-    seatZoneId: ""
+    seatZoneId: "",
+    seat_number: "",
+    freeBg: 'https://vip2.loli.io/2023/04/05/672uUQBgzeLSf1G.png',
+    busyBg: 'https://vip2.loli.io/2023/04/05/ecWymJTbS2ogM1q.png',
+    modalShow: false,
+    startTime: "",
+    endTime: ""
   },
 
   onLoad: function() {
@@ -23,25 +29,6 @@ Page({
         console.log(res.errMsg);
       }
     })
-    
-    // this.getSeatZoneList()
-
-    // const that = this
-    // const eventChannel = that.getOpenerEventChannel()
-    // eventChannel.on('acceptDataFromOpenerPage', (data) => {
-    //   console.log(data.data);
-    //   that.setData({
-    //     seatZoneList: data.data,
-    //     seatZoneId: data.data[0].seat_area
-    //   })
-      // wx.setStorage({
-      //   key: 'myData',
-      //   data: data.data
-      // })
-      // console.log(that.seatZoneList);
-      // console.log(that.seatZoneId);
-    // })
-    // that.getSeatZoneList()
   },
 
   getSeatZoneList: function () {
@@ -69,7 +56,44 @@ Page({
     })
   },
 
-  onBtnClick() {
-    console.log("按钮点击");
+  bindStartTime: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      startTime: e.detail.value
+    })
+  },
+
+  bindEndTime: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      endTime: e.detail.value
+    })
+  },
+
+  showModal(event) {
+    const number = event.currentTarget.dataset.number
+    this.setData({
+      modalShow: true,
+      seat_number: number
+    })
+  },
+
+  cancel() {
+    this.setData({
+      modalShow: false,
+      startTime: "",
+      endTime: ""
+    })
+  },
+
+  confirm() {
+    this.setData({
+      modalShow: false,
+      startTime: "",
+      endTime: ""
+    })
+  },
+
+  seatReserve() {
   }
 })

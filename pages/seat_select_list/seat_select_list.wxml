@@ -1,12 +1,29 @@
 <view class="btn-container">
   <block wx:for="{{seatZoneList}}" wx:key="seat_number">
-    <!-- style="background-color: {{item.status == '空闲' ? 'green' : (item.status == '已预约' ? 'yellow' : 'red')}}" -->
-    <view bindtap="onBtnClick" 
-      data-item="{{item}}" 
+    <view bindtap="showModal" 
+      data-number="{{item.seat_number}}" 
       class="btns-view">
-      <image src="{{ item.status == '空闲' ? 'https://vip2.loli.io/2023/04/05/672uUQBgzeLSf1G.png' : 'https://vip2.loli.io/2023/04/05/ecWymJTbS2ogM1q.png'}}" 
-      mode="aspectFit" />
+      <image src="{{ item.status == '空闲' ? freeBg : busyBg }}" 
+      mode="aspectFit" class="img"/>
       <text class="text">{{ item.seat_number }}</text>
     </view>
   </block>
+
+  <modal 
+    title="{{seat_number}}号座位"
+    hidden="{{!modalShow}}"
+    confirm-text="确定"
+    cancel-text="取消"
+    bindconfirm="confirm"
+    bindcancel="cancel" >
+    <view>
+      <picker mode="time" value="{{startTime}}" start="09:00" end="21:00" bindchange="bindStartTime">
+      <view class="time-container"><view>起始时间：</view> <view class="time">{{startTime}}</view></view>
+
+      </picker>
+      <picker mode="time" value="{{endTime}}" start="08:00" end="22:00" bindchange="bindEndTime">
+        <view class="time-container"><view>结束时间：</view> <view class="time">{{endTime}}</view></view>
+      </picker>
+    </view>
+  </modal>
 </view>
