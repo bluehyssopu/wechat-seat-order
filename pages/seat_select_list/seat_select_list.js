@@ -3,6 +3,7 @@ const app = getApp();
 
 Page({
   data: {
+    user_id: "",
     seatZoneList: [],
     seatZoneId: "",
     seat_number: "",
@@ -10,7 +11,8 @@ Page({
     busyBg: 'https://vip2.loli.io/2023/04/05/ecWymJTbS2ogM1q.png',
     modalShow: false,
     startTime: "",
-    endTime: ""
+    endTime: "",
+    freeTime: ""
   },
 
   onLoad: function() {
@@ -24,6 +26,19 @@ Page({
         })
         console.log(that.data.seatZoneId);
         that.getSeatZoneList()
+      },
+      fail: function(res) {
+        console.log(res.errMsg);
+      }
+    })
+    wx.getStorage({
+      key: 'user_id',
+      success: function(res) {
+        const id = res.data
+        that.setData({
+          user_id: id
+        })
+        console.log(that.data.user_id);
       },
       fail: function(res) {
         console.log(res.errMsg);
@@ -73,9 +88,9 @@ Page({
   showModal(event) {
     const number = event.currentTarget.dataset.number
     this.setData({
-      modalShow: true,
       seat_number: number
     })
+    this.getSeatFreeTime()
   },
 
   cancel() {
@@ -87,6 +102,7 @@ Page({
   },
 
   confirm() {
+    this.seatReserve()
     this.setData({
       modalShow: false,
       startTime: "",
@@ -94,6 +110,55 @@ Page({
     })
   },
 
+  getSeatFreeTime() {
+    const that = this
+    wx.request({
+      url: baseUrl + '/api/seat/freetime',
+      method: 'post',
+      data: {
+        seat_id: that.data.seat_number
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'Authorization': wx.getStorageSync('token')
+      },
+      success: (res) => {
+        const obj = res.data.data
+        // console.log(obj);
+        that.setData({
+          freeTime: obj,
+          modalShow: true
+        })
+      },
+      fail: function (res) {
+        console.log(res.errMsg);
+      }
+    })
+  },
+
   seatReserve() {
+    const that = this
+    wx.request({
+      url: baseUrl + '/api/seat/reserve',
+      method: 'post',
+      data: {
+        user_id: that.data.user_id,
+        seat_area: that.data.seatZoneId,
+        seat_id: that.data.seat_number,
+        startTime: that.data.startTime,
+        endTime: that.data.endTime
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'Authorization': wx.getStorageSync('token')
+      },
+      success: (res) => {
+        const obj = res.data
+        console.log(obj);
+      },
+      fail: function (res) {
+        console.log(res.errMsg);
+      }
+    })
   }
 })

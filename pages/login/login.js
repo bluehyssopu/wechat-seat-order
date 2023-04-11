@@ -22,6 +22,7 @@ Page({
 
   onSubmit: function (e) {
     console.log(this.data);
+    const user_id = this.data.username
     wx.request({
       url: baseUrl + '/api/login',
       method: 'POST',
@@ -40,6 +41,10 @@ Page({
           wx.setStorage({
             key: "token",
             data: res.data.token,
+          })
+          wx.setStorage({
+            key: "user_id",
+            data: user_id
           })
           wx.redirectTo({
             url: '/pages/home/home',
