@@ -12,7 +12,8 @@ Page({
     modalShow: false,
     startTime: "",
     endTime: "",
-    freeTime: ""
+    freeTime: "",
+    message: ""
   },
 
   onLoad: function() {
@@ -85,6 +86,8 @@ Page({
     })
   },
 
+  // 保存座位的number 获取当前座位的已预约时间 展示预约窗口
+  // 已预约时间 + picker选择器
   showModal(event) {
     const number = event.currentTarget.dataset.number
     this.setData({
@@ -153,8 +156,12 @@ Page({
         'Authorization': wx.getStorageSync('token')
       },
       success: (res) => {
-        const obj = res.data
-        console.log(obj);
+        const message = res.data.message
+        // console.log(obj);
+        wx.showToast({
+          title: message,
+          icon: 'none'
+        })
       },
       fail: function (res) {
         console.log(res.errMsg);
