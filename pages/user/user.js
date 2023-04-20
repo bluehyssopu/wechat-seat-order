@@ -47,6 +47,10 @@ Page({
         //   data: obj
         // })
         // that.userInfo = obj
+        wx.setStorage({
+          key: "credit_value",
+          data: obj.credit_value
+        })
       },
       fail: function (res) {
         console.log(res.errMsg);

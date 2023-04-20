@@ -14,6 +14,10 @@
     <text class="value">{{userInfo.email}}</text>
   </view>
   <view class="user-info-item">
+    <text class="label iconfont icon-star">诚信值：</text>
+    <text class="value">{{ userInfo.credit_value }}</text>
+  </view>
+  <view class="user-info-item">
     <text class="label iconfont icon-version"> 当前版本</text>
     <text class="value">{{version}}</text>
   </view>

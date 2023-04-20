@@ -50,7 +50,7 @@
   content: "\e71a";
 }
 
-.icon-xingxing:before {
+.icon-star:before {
   content: "\e870";
 }
 

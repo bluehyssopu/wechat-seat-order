@@ -13,7 +13,8 @@ Page({
     startTime: "",
     endTime: "",
     freeTime: "",
-    message: ""
+    message: "",
+    credit_value: 1
   },
 
   onLoad: function() {
@@ -43,6 +44,15 @@ Page({
       },
       fail: function(res) {
         console.log(res.errMsg);
+      }
+    })
+    wx.getStorage({
+      key: 'credit_value',
+      success: function(res) {
+        const value = res.data
+        that.setData({
+          credit_value: value
+        })
       }
     })
   },
@@ -105,7 +115,14 @@ Page({
   },
 
   confirm() {
-    this.seatReserve()
+    if (this.data.credit_value < 6) {
+      wx.showToast({
+        title: "当前诚信值过低，无法预约",
+        icon: 'none'
+      })
+    } else {
+      this.seatReserve()
+    }
     this.setData({
       modalShow: false,
       startTime: "",
