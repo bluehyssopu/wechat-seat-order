@@ -1,2 +1,3 @@
 <!--pages/seat_select_mine/seat_select_mine.wxml-->
 <text>pages/seat_select_mine/seat_select_mine.wxml</text>
+<view>用户当天待办的预约</view>

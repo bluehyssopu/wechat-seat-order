@@ -1,2 +1,22 @@
 <!--pages/seat_select_history/seat_select_history.wxml-->
-<text>pages/seat_select_history/seat_select_history.wxml</text>
+<view class="btn-container">
+  <view class="btns-view">
+    <text>预约编号</text>
+    <text>座位编号</text>
+    <text>日期</text>
+    <text>开始时间</text>
+    <text>结束时间</text>
+    <text>预约状态</text>
+  </view>
+  <block wx:for="{{reservationList}}" wx:key="index">
+    <view class="btns-view">
+      <text class="text">{{ item.id }}</text>
+      <text class="text">{{ item.seat_id }}</text>
+      <text>{{ item.date }}</text>
+      <text>{{ item.start_time }}</text>
+      <text>{{ item.end_time }}</text>
+      <text>{{ item.status }}</text>
+    </view>
+  </block>
+</view>
+

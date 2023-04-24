@@ -1,65 +1,71 @@
 // pages/seat_select_history/seat_select_history.js
+const baseUrl = require("../../app");
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    user_id: "",
+    reservationList: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
-
+    const that = this
+    wx.getStorage({
+      key: 'user_id',
+      success: function(res) {
+        const id = res.data
+        console.log(id);
+        that.setData({
+          user_id: id
+        })
+        that.getReservationList()
+      },
+      fail: function(res) {
+        console.log(res.errMsg);
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+  getReservationList: function () {
+    const that = this
+    wx.request({
+      url: baseUrl + '/api/seat/reservations',
+      method: 'post',
+      data: {
+        user_id: that.data.user_id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'Authorization': wx.getStorageSync('token')
+      },
+      success: (res) => {
+        const obj = res.data.data
+        // console.log(obj);
+        that.setData({
+          reservationList: obj
+        })
+      },
+      fail: function (res) {
+        console.log(res.errMsg);
+      }
+    })
+  },
+
   onReady() {
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
   onHide() {
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onUnload() {
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage() {
 
   }

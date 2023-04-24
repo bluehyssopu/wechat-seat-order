@@ -1,1 +1,16 @@
-/* pages/seat_select_history/seat_select_history.wxss */
+.btn-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.btns-view {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  margin: 10rpx;
+  height: 120rpx;
+  background-color: #fff;
+  line-height: 55rpx;
+}

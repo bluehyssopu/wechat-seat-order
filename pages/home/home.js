@@ -12,8 +12,8 @@ Page({
       },
       {
         name: "选座记录",
-        // path: "/pages/seat_select_history/seat_select_history"
-        path: "/pages/logs/logs"
+        path: "/pages/seat_select_history/seat_select_history"
+        // path: "/pages/logs/logs"
       },
       {
         name: "学习记录",
