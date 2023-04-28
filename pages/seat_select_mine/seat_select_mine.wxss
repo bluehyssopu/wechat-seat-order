@@ -1,1 +1,65 @@
 /* pages/seat_select_mine/seat_select_mine.wxss */
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+  padding: 40rpx;
+  font-size: 48rpx;
+  color: #fff;
+  background: linear-gradient(to bottom, #167aea, #167aea33);
+  border-bottom-left-radius: 60rpx;
+  border-bottom-right-radius: 60rpx;
+  -webkit-box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
+  -moz-box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
+  box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.btns-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20rpx 10rpx;
+  border-radius: 8rpx;
+  background-color: #fff;
+  align-content: center;
+}
+
+.list-item-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  width: 90%;
+  margin: 10rpx 20rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.content {
+  font-size: 28rpx;
+  color: #656565;
+}
+
+.select-btn:not([size="default"]) {
+  margin: auto 10rpx;
+  line-height: 1.8;
+  color: #2a5cc2;
+  font-size: 30rpx;
+  font-weight: normal;
+  background-color: #ecf0fb;
+  border: 1px solid #3268d1;
+}

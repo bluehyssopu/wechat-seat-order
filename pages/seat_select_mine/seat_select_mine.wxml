@@ -1,3 +1,18 @@
 <!--pages/seat_select_mine/seat_select_mine.wxml-->
-<text>pages/seat_select_mine/seat_select_mine.wxml</text>
-<view>用户当天待办的预约</view>
+<view class="header">
+  今日预约
+</view>
+<view class="btn-container">
+  <block wx:for="{{mySeat}}" wx:key="id">
+    <view class="btns-view" >
+      <view class="list-item-content">
+        <text class="title">座位号：{{item.seat_id}}</text><text>{{date}}</text>
+        <button class="select-btn" size="mini" bindtap="checkout" data-id="{{item.id}}" data-index="{{index}}">签到</button>
+      </view>
+      <view class="list-item-content">
+        <text class="content">{{item.start_time}}~{{item.end_time}}</text>
+        <button class="select-btn" size="mini" bindtap="cancelSeat" data-id="{{item.id}}" data-index="{{index}}">取消</button>
+      </view>
+    </view>
+  </block>
+</view>
