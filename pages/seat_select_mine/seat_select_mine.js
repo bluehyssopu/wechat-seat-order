@@ -1,31 +1,39 @@
 const baseUrl = require("../../app")
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+
+const qqmapsdk = new QQMapWX({
+  key: '2AZBZ-JS5W4-E2MUP-KMF4V-BVZA5-GCFIA'
+});
 
 // pages/seat_select_mine/seat_select_mine.js
 Page({
   data: {
     user_id: "",
     mySeat: [],
-    date: new Date().toLocaleDateString()
+    date: new Date().toLocaleDateString(),
+    isHidden: true,
+    nowlatitude: 1,
+    nowlongitude: 1,
   },
 
-  onLoad: function() {
+  onLoad: function () {
     const that = this
     wx.getStorage({
       key: 'user_id',
-      success: function(res) {
+      success: function (res) {
         const id = res.data
         that.setData({
           user_id: id
         })
         that.getSeatMine()
       },
-      fail: function(res) {
+      fail: function (res) {
         console.log(res.errMsg);
       }
     })
   },
 
-  getSeatMine: function() {
+  getSeatMine() {
     const that = this
     wx.request({
       url: baseUrl + '/api/seat/mine',
@@ -73,7 +81,7 @@ Page({
               'Authorization': wx.getStorageSync('token')
             },
             success: (res) => {
-              
+
             }
           })
         } else { //这里是点击了取消以后
@@ -81,5 +89,98 @@ Page({
         }
       }
     })
+  },
+
+  bindCheckout(e) {
+    // 东馆位置
+    // lat: 35.946651
+    // lng: 120.182667
+    const that = this
+    // 获取用户的位置信息
+    wx.getLocation({
+      type: 'wgs84', // 使用 GPS 定位
+      isHighAccuracy: true,
+      success: res => {
+        const latitude = res.latitude;
+        const longitude = res.longitude;
+        console.log(latitude + " " + longitude);
+        // wx.setStorageSync('latitude', latitude)
+        // wx.setStorageSync('longitude', longitude)
+
+        // 获取用户的经纬度信息
+        // const latitude1 = wx.getStorageSync('latitude')
+        // const longitude1 = wx.getStorageSync('longitude')
+
+        // 定义目标位置的经纬度信息
+        const latitude2 = 35.946651
+        const longitude2 = 120.182667
+
+        // 计算用户与目标位置之间的距离
+        const distance = this.getDistance(latitude, longitude, latitude2, longitude2)
+
+        // 根据距离判断用户是否在规定的范围内
+        if (distance <= 2000) {
+          that.checkout(e)
+          console.log('用户在规定范围内')
+        } else {
+          console.log('用户不在规定范围内')
+        }
+
+        // 使用 QQMapWX 实例的 reverseGeocoder 接口逆地址解析，获取位置的地址信息
+        qqmapsdk.reverseGeocoder({
+          location: {
+            latitude: latitude,
+            longitude: longitude
+          },
+          success: res => {
+            const address = res.result.address;
+            const dec = '用户当前位置：' + address + '，签到成功'
+            console.log('用户当前位置：', address);
+            wx.showToast({
+              title: dec,
+              icon: 'none'
+            })
+          }
+        });
+      },
+      fail: err => {
+        console.log(err);
+      }
+    });
+
+  },
+
+  checkout(e) {
+    wx.request({
+      url: baseUrl + '/api/seat/checkout',
+      method: 'post',
+      data: {
+        reserveId: e.currentTarget.dataset.id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'Authorization': wx.getStorageSync('token')
+      },
+      success: (res) => {
+        const obj = res.data
+        console.log(obj);
+      }
+    })
+  },
+
+  // 计算用户与目标位置之间的球面距离
+  getDistance(latitude1, longitude1, latitude2, longitude2) {
+    const EARTH_RADIUS = 6378137.0 // 地球半径
+    const PI = Math.PI
+    const radLat1 = latitude1 * PI / 180.0
+    const radLat2 = latitude2 * PI / 180.0
+    const a = radLat1 - radLat2
+    const b = longitude1 * PI / 180.0 - longitude2 * PI / 180.0
+    const s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) +
+      Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)))
+    const distance = s * EARTH_RADIUS
+    console.log(distance);
+    return distance
   }
+
 })

@@ -7,7 +7,7 @@
     <view class="btns-view" >
       <view class="list-item-content">
         <text class="title">座位号：{{item.seat_id}}</text><text>{{date}}</text>
-        <button class="select-btn" size="mini" bindtap="checkout" data-id="{{item.id}}" data-index="{{index}}">签到</button>
+        <button class="select-btn" size="mini" bindtap="bindCheckout" data-id="{{item.id}}" data-index="{{index}}">签到</button>
       </view>
       <view class="list-item-content">
         <text class="content">{{item.start_time}}~{{item.end_time}}</text>
@@ -16,3 +16,16 @@
     </view>
   </block>
 </view>
+<view class="mapContianer"
+  style="{{isHidden?'visibility:hidden;height:0;width:0;':'height:100%;width:100%;'}}">
+  <map id="myMap" 
+    style="width:100%;height:100%;"
+    latitude="{{latitude}}" 
+    longitude="{{longitude}}" 
+    scale="16" 
+    markers="{{markers}}" 
+    bindmarkertap="tapMarker">
+    </map>
+</view>
+
+

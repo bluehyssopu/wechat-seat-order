@@ -63,3 +63,8 @@
   background-color: #ecf0fb;
   border: 1px solid #3268d1;
 }
+
+.mapContianer {
+  height: 100%;
+  width: 100%;
+}
