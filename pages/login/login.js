@@ -20,7 +20,7 @@ Page({
     })
   },
 
-  onSubmit: function (e) {
+  onSubmit: function () {
     console.log(this.data);
     const user_id = this.data.username
     wx.request({
@@ -46,7 +46,7 @@ Page({
             key: "user_id",
             data: user_id
           })
-          wx.redirectTo({
+          wx.switchTab({
             url: '/pages/home/home',
           })
         } else {

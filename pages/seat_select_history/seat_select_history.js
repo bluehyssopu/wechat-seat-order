@@ -38,7 +38,7 @@ Page({
         'Authorization': wx.getStorageSync('token')
       },
       success: (res) => {
-        const obj = res.data.data
+        const obj = res.data.data.reverse()
         // console.log(obj);
         that.setData({
           reservationList: obj

@@ -92,61 +92,70 @@ Page({
   },
 
   bindCheckout(e) {
-    // 东馆位置
-    // lat: 35.946651
-    // lng: 120.182667
-    const that = this
-    // 获取用户的位置信息
-    wx.getLocation({
-      type: 'wgs84', // 使用 GPS 定位
-      isHighAccuracy: true,
-      success: res => {
-        const latitude = res.latitude;
-        const longitude = res.longitude;
-        console.log(latitude + " " + longitude);
-        // wx.setStorageSync('latitude', latitude)
-        // wx.setStorageSync('longitude', longitude)
+    const defaultDay = new Date().toLocaleDateString()
+    const index = e.currentTarget.dataset.index
+    const startTime = this.data.mySeat[index].start_time
+    const start = new Date(defaultDay + " " + startTime).getTime()
+    const now = new Date().getTime()
 
-        // 获取用户的经纬度信息
-        // const latitude1 = wx.getStorageSync('latitude')
-        // const longitude1 = wx.getStorageSync('longitude')
+    if (now < start) {
+      wx.showToast({
+        title: '还未到签到时间',
+        icon: 'error'
+      })
+    } else {
+      // 东馆位置
+      // lat: 35.946651
+      // lng: 120.182667
+      const that = this
+      // 获取用户的位置信息
+      wx.getLocation({
+        type: 'wgs84', // 使用 GPS 定位
+        isHighAccuracy: true,
+        success: res => {
+          const latitude = res.latitude;
+          const longitude = res.longitude;
+          console.log(latitude + " " + longitude);
 
-        // 定义目标位置的经纬度信息
-        const latitude2 = 35.946651
-        const longitude2 = 120.182667
+          // 定义目标位置的经纬度信息
+          const latitude2 = 35.946651
+          const longitude2 = 120.182667
 
-        // 计算用户与目标位置之间的距离
-        const distance = this.getDistance(latitude, longitude, latitude2, longitude2)
-
-        // 根据距离判断用户是否在规定的范围内
-        if (distance <= 2000) {
-          that.checkout(e)
-          console.log('用户在规定范围内')
-        } else {
-          console.log('用户不在规定范围内')
-        }
-
-        // 使用 QQMapWX 实例的 reverseGeocoder 接口逆地址解析，获取位置的地址信息
-        qqmapsdk.reverseGeocoder({
-          location: {
-            latitude: latitude,
-            longitude: longitude
-          },
-          success: res => {
-            const address = res.result.address;
-            const dec = '用户当前位置：' + address + '，签到成功'
-            console.log('用户当前位置：', address);
-            wx.showToast({
-              title: dec,
-              icon: 'none'
-            })
+          // 计算用户与目标位置之间的距离
+          const distance = this.getDistance(latitude, longitude, latitude2, longitude2)
+          
+          let message = ""
+          // 根据距离判断用户是否在规定的范围内
+          if (distance <= 2000) {
+            that.checkout(e)
+            message = "用户已到达图书馆东馆，签到成功"
+          } else {
+            message = "用户不在图书馆东馆范围内，签到失败"
           }
-        });
-      },
-      fail: err => {
-        console.log(err);
-      }
-    });
+
+          // 使用 QQMapWX 实例的 reverseGeocoder 接口逆地址解析，获取位置的地址信息
+          qqmapsdk.reverseGeocoder({
+            location: {
+              latitude: latitude,
+              longitude: longitude
+            },
+            success: res => {
+              const address = res.result.address;
+              const dec = '用户当前位置：' + address + "；" + message
+              console.log('用户当前位置：', address);
+              wx.showToast({
+                title: dec,
+                icon: 'none'
+              })
+            }
+          });
+        },
+        fail: err => {
+          console.log(err);
+        }
+      });
+    }
+
 
   },
 
