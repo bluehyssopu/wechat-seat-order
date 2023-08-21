@@ -1,5 +1,7 @@
 // app.js
-const baseUrl = "http://8.130.76.114:4000"
+// const baseUrl = "http://47.104.109.145:4000"
+// const baseUrl = "http://110.42.220.152:8081"
+const baseUrl = "http://127.0.0.1:4000"
 module.exports = baseUrl
 
 App({
